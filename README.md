@@ -10,8 +10,11 @@ To export a image just simply click on the export button and the image should be
 ## Features
 - Difference of Gaussians
   - Basic
+  - Extended
 
 ## Examples
 ## Difference of Gaussains
 ### Basic
 <img width="1800" height="900" alt="DOG-Comparison-Basic" src="https://github.com/user-attachments/assets/e85e6bfb-04bd-465a-b05d-9796e045de03" />
+### Extended
+<img width="1800" height="900" alt="DOG-Comparison-Extended" src="https://github.com/user-attachments/assets/2fca2c91-1fe9-4790-aba7-368ed2145f0a" />
