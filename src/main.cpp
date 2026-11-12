@@ -39,11 +39,21 @@ int main()
     filters.reserve(8);
 
     // All the params for all the filters (a lil scuffed but works)
-    filters.emplace_back("DOG Filter(Basic)", "assets/shaders/default.vert", "assets/shaders/default.frag",
+    filters.emplace_back("DOG Filter(Basic)", "assets/shaders/default.vert", "assets/shaders/DOG.frag",
         std::vector<Param>{
-            { "sigma", Param::Type::Float, 2.5f, 0.5f, 10.0f },
+            { "sigma", Param::Type::Float, 1.4f, 0.5f, 10.0f },
             { "k", Param::Type::Float, 1.6f, 1.0f, 3.0f },
-            { "threshold", Param::Type::Float, 0.012f, 0.0f, 0.05f }
+            { "threshold", Param::Type::Float, 0.01f, 0.0f, 0.1f }
+        });
+
+    filters.emplace_back("DOG Filter(Extended)", "assets/shaders/default.vert", "assets/shaders/XDOG.frag",
+        std::vector<Param>{
+            { "sigma", Param::Type::Float, 1.4f,  0.5f, 5.0f   },
+            { "k", Param::Type::Float, 1.6f,  1.1f, 3.0f   },
+            { "tao", Param::Type::Float, 20.0f, 0.0f, 100.0f },
+            { "epsilon", Param::Type::Float, 0.55f, 0.0f, 1.0f   },
+            { "phi", Param::Type::Float, 100.0f, 1.0f, 200.0f },
+            { "colorAmount", Param::Type::Float, 0.0f, 0.0f, 1.0f }
         });
 
     // -1 because no filter is chosen so none
@@ -148,10 +158,27 @@ int main()
         }
         else
         {
-            // Disable the drop down and show params for the filter chosen
-            ImGui::Text("Filter: %s", filters[current].name().c_str());
+            // To switch the filter
+            if (ImGui::BeginCombo("Filter", filters[current].name().c_str()))
+            {
+                for (int i = 0; i < (int)filters.size(); i++)
+                {
+                    if (ImGui::Selectable(filters[i].name().c_str(), current == i))
+                    {
+                        if (current != i)
+                        {
+                            current = i;
+                            dirty = true;
+                            lastExport.clear();
+                        }
+                    }
+                }
+                ImGui::EndCombo();
+            }
+
             ImGui::Separator();
 
+            // Params for the chosen filter
             if (filters[current].drawSettings())
             {
                 dirty = true;
