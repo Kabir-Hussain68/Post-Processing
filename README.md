@@ -17,4 +17,5 @@ To export a image just simply click on the export button and the image should be
 ### Basic
 <img width="1800" height="900" alt="DOG-Comparison-Basic" src="https://github.com/user-attachments/assets/e85e6bfb-04bd-465a-b05d-9796e045de03" />
 ### Extended
-<img width="1800" height="900" alt="DOG-Comparison-Extended" src="https://github.com/user-attachments/assets/2fca2c91-1fe9-4790-aba7-368ed2145f0a" />
+<img width="3120" height="876" alt="DOG-Comparison-Extended" src="https://github.com/user-attachments/assets/b5a242dc-8dbe-41ef-89a9-b7911f5b95b7" />
+
